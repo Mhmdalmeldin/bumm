@@ -1,0 +1,79 @@
+Overview :
+A software tracks if the employee goes far from his disk and notifies the admin with the leave time and return time of the employee 
+
+Features :
+
+Our software consists of two applications applications (Console App & Tracker) with the following specifications :
+
+Console App
+
+The ability to switch users at any time
+Check if the employee's ID is valid
+
+Tracker
+
+Track the employee's attendance on a regular basis
+Accelerate the process of checking if the employee's status 
+Absence & return times to be written in the database 
+
+
+Communication
+
+GRPC technology is to be used as it
+
+Four GRPC functions with one request message and one response message each :
+
+1- SetupService
+It is responsible for validating the employee's ID by sending the ID provided by the employee to the database and responding with its status if it is a valid ID or not
+
+2- BeAtYourDisk
+It is responsible for checking if the employee exists or not by sending a picture on a regular basis to AI server which responds with 
+
+3- GetAllowedDuration
+It is responsible for checking the maximum allowed period of absence on a regular basis, as after this period the employee is considered absent
+
+4- RecordTimeData
+It is responsible for writing the alert and return times in the database
+
+
+
+Converting Python file to executables 
+
+PyInstaller bundles a Python application and all its dependencies into a single package. The user can run the packaged app without installing a Python interpreter or any modules. .
+
+
+Used commands :
+Pyinstaller console_app.py
+Pyinstaller --onefile service.py GRPC_file1.py  GRPC_file2.py
+
+
+--onefile option means converting all these files into one executable file 
+
+
+
+
+NSSM - the Non-Sucking Service Manager
+
+nssm is a service helper which doesn't suck. srvany and other service helper programs suck because they don't handle failure of the application running as a service. If you use such a program you may see a service listed as started when in fact the application has died. nssm monitors the running service and will restart it if it dies. With nssm you know that if a service says it's running, it really is. Alternatively, if your application is well-behaved you can configure nssm to absolve all responsibility for restarting it and let Windows take care of recovery actions.
+
+nssm logs its progress to the system Event Log so you can get some idea of why an application isn't behaving as it should.
+
+Managing services from the command line
+nssm's core functionality has always been available from the command line.
+
+Service installation
+nssm install <servicename>
+nssm install <servicename> <program>
+nssm install <servicename> <program> [<arguments>]
+By default the service's startup directory will be set to the directory containing the program. The startup directory can be overridden after the service has been installed.
+
+
+Starting and stopping a service
+nssm start <servicename>
+nssm stop <servicename>
+nssm restart <servicename>
+Querying a service's status
+nssm status <servicename>
+Sending controls to services
+nssm pause <servicename>
+nssm continue <servicename>
